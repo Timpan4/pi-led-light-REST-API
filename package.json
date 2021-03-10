@@ -3,6 +3,9 @@
     "version": "1.0.0",
     "description": "A small api for led strips",
     "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/Timpan4/pi-led-light-REST-API.git"

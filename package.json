@@ -1,0 +1,20 @@
+{
+    "name": "pi-led-api",
+    "version": "1.0.0",
+    "description": "A small api for led strips",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Timpan4/pi-led-light-REST-API.git"
+    },
+    "keywords": [
+        "rest",
+        "api"
+    ],
+    "author": "Tim",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Timpan4/pi-led-light-REST-API/issues"
+    },
+    "homepage": "https://github.com/Timpan4/pi-led-light-REST-API#readme"
+}

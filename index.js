@@ -6,10 +6,8 @@ var app = express();
 
 
 
-app.listen(3000, () => {
-    console.log("Server running on port 3000");
-});
-app.post("/update", (req, res, next) => {
+
+app.post("/update", (req, res) => {
     let rPin = new Gpio(req.rPin, { mode: Gpio.OUTPUT });;
     let gPin = new Gpio(req.gPin, { mode: Gpio.OUTPUT });;
     let bPin = new Gpio(req.pPin, { mode: Gpio.OUTPUT });;
@@ -17,4 +15,9 @@ app.post("/update", (req, res, next) => {
     rPin.pwmWrite(req.red);
     gPin.pwmWrite(req.green);
     bPin.pwmWrite(req.blue);
+    res.sendStatus("hello i have recieve");
+});
+
+app.listen(3000, () => {
+    console.log("Server running on port 3000");
 });

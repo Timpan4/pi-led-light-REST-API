@@ -2,6 +2,7 @@ var express = require("express");
 const bodyParser = require("body-parser");
 
 const Gpio = require('pigpio').Gpio;
+const router = express.Router();
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

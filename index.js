@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 
 
-app.post("/update", (req, res) => {
+router.post("/update", (req, res) => {
     let rPin = new Gpio(req.rPin, { mode: Gpio.OUTPUT });;
     let gPin = new Gpio(req.gPin, { mode: Gpio.OUTPUT });;
     let bPin = new Gpio(req.pPin, { mode: Gpio.OUTPUT });;

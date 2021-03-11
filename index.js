@@ -2,7 +2,7 @@
 
 const express = require('express')
 const bodyParser = require('body-parser')
-const convert = require('color-convert');
+const converter = require('color-convert');
 
 // Create a new instance of express
 const app = express()

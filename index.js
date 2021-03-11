@@ -21,7 +21,7 @@ app.post('/update', function (req, res) {
     res.send(JSON.stringify(req.body));
     let pin = parseInt(req.body.rPin);
     let onOff = parseInt(req.body.onOFF);
-    let rPin = new Gpio(5, { mode: Gpio.OUTPUT });
+    var rPin = new Gpio(5, { mode: Gpio.OUTPUT });
 
     let h = parseInt(req.body.h);
     let s = parseInt(req.body.s);
@@ -33,7 +33,7 @@ app.post('/update', function (req, res) {
         for (let tempBrightness = 0; tempBrightness <= b; tempBrightness++) {
             let rgb = HSLToRGB(h, s, tempBrightness);
             // console.log(rgb);
-            console.log(rPin.pwmWrite(rgb[0]));
+            rPin.pwmWrite(parseInt(rgb[0]));
             // sleep(5);
         }
     } else if (onOff == 0) {
@@ -41,7 +41,7 @@ app.post('/update', function (req, res) {
             b--;
             let rgb = HSLToRGB(h, s, b);
             // console.log(rgb);
-            console.log(rPin.pwmWrite(rgb[0]));
+            rPin.pwmWrite(parseInt(rgb[0]));
             // sleep(5);
         }
     }

@@ -32,16 +32,16 @@ app.post('/update', function (req, res) {
     if (onOff == 1) {
         for (let tempBrightness = 0; tempBrightness <= b; tempBrightness++) {
             let rgb = HSLToRGB(h, s, tempBrightness);
-            console.log(rgb);
-            rPin.pwmWrite(rgb[0]);
+            // console.log(rgb);
+            console.log(rPin.pwmWrite(rgb[0]));
             // sleep(5);
         }
     } else if (onOff == 0) {
         while (b != 0) {
             b--;
             let rgb = HSLToRGB(h, s, b);
-            console.log(rgb);
-            rPin.pwmWrite(rgb[0]);
+            // console.log(rgb);
+            console.log(rPin.pwmWrite(rgb[0]));
             // sleep(5);
         }
     }

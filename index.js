@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const router = express.Router();
 const app = express();
 const Gpio = require('pigpio').Gpio;
+const port = 80;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -22,8 +23,8 @@ router.post('/update', (req, res) => {
     res.send("hello i have recieve");
 });
 
-app.listen(3000, () => {
-    console.log("Started on PORT 3000");
+app.listen(port, () => {
+    console.log("Started on PORT " + port);
 })
 // app.listen(3000, () => {
 //     let rPin = new Gpio(5, { mode: Gpio.OUTPUT });;

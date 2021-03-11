@@ -34,14 +34,14 @@ app.post('/update', function (req, res) {
             let rgb = HSLToRGB(h, s, tempBrightness);
             console.log(rgb);
             rPin.pwmWrite(rgb[0]);
-            sleep(5);
+            // sleep(5);
         }
     } else if (onOff === 0) {
         while (b != 0) {
             b--;
             let rgb = HSLToRGB(h, s, b);
             rPin.pwmWrite(rgb[0]);
-            sleep(5);
+            // sleep(5);
         }
     }
     // gPin.pwmWrite(req.body.green);

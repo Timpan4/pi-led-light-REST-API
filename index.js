@@ -30,7 +30,7 @@ app.post('/update', function (req, res) {
     // let bPin = new Gpio(String(req.body.pPin), { mode: Gpio.OUTPUT });
 
     if (onOff === 1) {
-        for (let tempBrightness = 0; tempBrightness <= brightness; tempBrightness++) {
+        for (let tempBrightness = 0; tempBrightness <= b; tempBrightness++) {
             let rgb = HSLToRGB(h, s, tempBrightness);
             rPin.pwmWrite(rgb[0]);
             sleep(5);
@@ -67,6 +67,16 @@ app.listen(port, (err) => {
 // });
 
 function HSLToRGB(h, s, l) {
+    // Must be fractions of 1
+    s /= 100;
+    l /= 100;
+
+    let c = (1 - Math.abs(2 * l - 1)) * s,
+        x = c * (1 - Math.abs((h / 60) % 2 - 1)),
+        m = l - c / 2,
+        r = 0,
+        g = 0,
+        b = 0;
 
     if (0 <= h && h < 60) {
         r = c; g = x; b = 0;

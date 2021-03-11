@@ -34,7 +34,7 @@ app.post('/update', function (req, res) {
             let rgb = HSLToRGB(h, s, tempBrightness);
             // console.log(rgb);
             rPin.pwmWrite(parseInt(rgb[0]));
-            // sleep(5);
+            sleep(5);
         }
     } else if (onOff == 0) {
         while (b != 0) {
@@ -42,7 +42,7 @@ app.post('/update', function (req, res) {
             let rgb = HSLToRGB(h, s, b);
             // console.log(rgb);
             rPin.pwmWrite(parseInt(rgb[0]));
-            // sleep(5);
+            sleep(5);
         }
     }
     // gPin.pwmWrite(req.body.green);

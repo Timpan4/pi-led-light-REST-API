@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
     res.sendfile("index.html");
 });
 
-router.post('/update', (req, res) => {
+router.get('/update', (req, res) => {
     console.log(req.body);
     let rPin = new Gpio(req.body.rPin, { mode: Gpio.OUTPUT });;
     let gPin = new Gpio(req.body.gPin, { mode: Gpio.OUTPUT });;

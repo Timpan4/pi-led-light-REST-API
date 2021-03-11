@@ -9,7 +9,7 @@ const Gpio = require('pigpio').Gpio;
 const port = 80;
 
 app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 
 // router.get('/', (req, res) => {
 //     res.sendfile("index.html");

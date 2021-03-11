@@ -21,5 +21,7 @@ app.use("/", router);
 
 
 app.listen(3000, () => {
+    let rPin = new Gpio(5, { mode: Gpio.OUTPUT });;
+    rPin.pwmWrite(0);
     console.log("Server running on port 3000");
 });

@@ -21,9 +21,8 @@ app.post('/update', function (req, res) {
     res.send(JSON.stringify(req.body));
     let pin = parseInt(req.body.rPin);
     let onOff = parseInt(req.body.onOFF);
-    var rPin = new Gpio(5, { mode: Gpio.OUTPUT });
     console.log(rPin);
-    rPin.pwmWrite(parseInt(0));
+    rPin.pwmWrite(0);
 
     let h = parseInt(req.body.h);
     let s = parseInt(req.body.s);
@@ -52,6 +51,8 @@ app.post('/update', function (req, res) {
 
 app.listen(port, (err) => {
     console.log("Started on PORT " + port);
+    let rPin = new Gpio(5, { mode: Gpio.OUTPUT });
+    rPin.pwmWrite(0);
     if (err) {
         throw err;
     }

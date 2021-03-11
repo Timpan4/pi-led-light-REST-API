@@ -19,7 +19,7 @@ router.post('/update', (req, res) => {
     rPin.pwmWrite(req.body.red);
     gPin.pwmWrite(req.body.green);
     bPin.pwmWrite(req.body.blue);
-    res.end("hello i have recieve");
+    res.send("hello i have recieve");
 });
 
 app.listen(3000, () => {

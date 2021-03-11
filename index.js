@@ -28,10 +28,11 @@ app.post('/update', function (req, res) {
     let b = parseInt(req.body.b);
     // let gPin = new Gpio(String(req.body.gPin), { mode: Gpio.OUTPUT });
     // let bPin = new Gpio(String(req.body.pPin), { mode: Gpio.OUTPUT });
-
+    console.log(onOff);
     if (onOff === 1) {
         for (let tempBrightness = 0; tempBrightness <= b; tempBrightness++) {
             let rgb = HSLToRGB(h, s, tempBrightness);
+            console.log(rgb);
             rPin.pwmWrite(rgb[0]);
             sleep(5);
         }

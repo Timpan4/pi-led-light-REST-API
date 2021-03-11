@@ -22,6 +22,7 @@ app.post('/update', function (req, res) {
     let pin = parseInt(req.body.rPin);
     let onOff = parseInt(req.body.onOFF);
     var rPin = new Gpio(5, { mode: Gpio.OUTPUT });
+    console.log(rPin);
     rPin.pwmWrite(parseInt(0));
 
     let h = parseInt(req.body.h);

@@ -2,6 +2,7 @@
 
 const express = require('express')
 const bodyParser = require('body-parser')
+const convert = require('color-convert');
 
 // Create a new instance of express
 const app = express()
@@ -31,7 +32,8 @@ app.post('/update', function (req, res) {
     // let bPin = new Gpio(String(req.body.pPin), { mode: Gpio.OUTPUT });
     if (onOff == 1) {
         for (let tempBrightness = 0; tempBrightness <= b; tempBrightness++) {
-            let rgb = HSLToRGB(h, s, tempBrightness);
+            // let rgb = HSLToRGB(h, s, tempBrightness);
+            let rgb = converter.hsv.rgb([h, s, tempBrightness]);
             console.log("on" + rgb);
             rPin.pwmWrite(parseInt(rgb[0]));
             sleep(5);
@@ -39,7 +41,7 @@ app.post('/update', function (req, res) {
     } else if (onOff == 0) {
         while (b != 0) {
             b--;
-            let rgb = HSLToRGB(h, s, b);
+            let rgb = converter.hsv.rgb([h, s, b]);
             console.log("off" + rgb);
             rPin.pwmWrite(parseInt(rgb[0]));
             sleep(5);

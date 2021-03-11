@@ -22,6 +22,8 @@ app.post('/update', function (req, res) {
     let pin = parseInt(req.body.rPin);
     let onOff = parseInt(req.body.onOFF);
     let rPin = new Gpio(pin, { mode: Gpio.OUTPUT });
+
+    let rgb = HSLToRGB(h, s, tempBrightness);
     // rPin.pwmWrite(0);
 
     let h = parseInt(req.body.h);

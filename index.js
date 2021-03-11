@@ -19,9 +19,9 @@ app.post('/update', function (req, res) {
     // console.log(req.body);
     // res.set('Content-Type', 'text/plain')
     res.send(JSON.stringify(req.body));
-    let rPin = new Gpio(Int(req.body.rPin), { mode: Gpio.OUTPUT });
-    let gPin = new Gpio(Int(req.body.gPin), { mode: Gpio.OUTPUT });
-    let bPin = new Gpio(Int(req.body.pPin), { mode: Gpio.OUTPUT });
+    let rPin = new Gpio(Number(req.body.rPin), { mode: Gpio.OUTPUT });
+    let gPin = new Gpio(Number(req.body.gPin), { mode: Gpio.OUTPUT });
+    let bPin = new Gpio(Number(req.body.pPin), { mode: Gpio.OUTPUT });
     rPin.pwmWrite(req.body.red);
     gPin.pwmWrite(req.body.green);
     bPin.pwmWrite(req.body.blue);

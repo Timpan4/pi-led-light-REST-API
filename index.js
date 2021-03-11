@@ -16,8 +16,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // });
 
 app.post('/update', function (req, res) {
-    // console.log(req.body);
-    res.set('Content-Type', 'text/plain')
+    console.log(req.body);
+    // res.set('Content-Type', 'text/plain')
     res.send("hello i have recieve");
     let rPin = new Gpio(req.body.rPin, { mode: Gpio.OUTPUT });
     let gPin = new Gpio(req.body.gPin, { mode: Gpio.OUTPUT });

@@ -21,7 +21,7 @@ app.post('/update', function (req, res) {
     res.send(JSON.stringify(req.body));
     let pin = parseInt(req.body.rPin);
     let onOff = parseInt(req.body.onOFF);
-    let rPin = new Gpio(pin, { mode: Gpio.OUTPUT });
+    let rPin = new Gpio(5, { mode: Gpio.OUTPUT });
 
     let h = parseInt(req.body.h);
     let s = parseInt(req.body.s);
@@ -40,6 +40,7 @@ app.post('/update', function (req, res) {
         while (b != 0) {
             b--;
             let rgb = HSLToRGB(h, s, b);
+            console.log(rgb);
             rPin.pwmWrite(rgb[0]);
             // sleep(5);
         }

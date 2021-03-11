@@ -23,7 +23,7 @@ app.post('/update', function (req, res) {
     let onOff = parseInt(req.body.onOFF);
     let rPin = new Gpio(parseInt(req.body.rPin), { mode: Gpio.OUTPUT });
     let gPin = new Gpio(parseInt(req.body.gPin), { mode: Gpio.OUTPUT });
-    let bPin = new Gpio(parseInt(req.body.pPin), { mode: Gpio.OUTPUT });
+    let bPin = new Gpio(parseInt(req.body.bPin), { mode: Gpio.OUTPUT });
     // rPin.pwmWrite(0);
 
     let h = parseInt(req.body.h);

@@ -20,6 +20,7 @@ router.get('/update', (req, res) => {
     rPin.pwmWrite(req.body.red);
     gPin.pwmWrite(req.body.green);
     bPin.pwmWrite(req.body.blue);
+    res.set('Content-Type', 'text/plain')
     res.send("hello i have recieve");
 });
 

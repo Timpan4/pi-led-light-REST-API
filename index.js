@@ -32,6 +32,7 @@ app.post('/update', function (req, res) {
     if (onOff == 1) {
         for (let tempBrightness = 0; tempBrightness <= b; tempBrightness++) {
             let rgb = HSLToRGB(h, s, tempBrightness);
+            res.send(rgb);
             // console.log(rgb);
             rPin.pwmWrite(parseInt(rgb[0]));
             sleep(5);

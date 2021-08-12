@@ -12,31 +12,23 @@ const port = 80;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// router.get('/', (req, res) => {
-//     res.sendfile("index.html");
-// });
-
 app.post('/update', function (req, res) {
-    // console.log(req.body);
-    // res.set('Content-Type', 'text/plain')
     res.send(JSON.stringify(req.body));
     let onOff = parseInt(req.body.onOFF);
-    let rPin = new Gpio(parseInt(req.body.rPin), { mode: Gpio.OUTPUT });
-    let gPin = new Gpio(parseInt(req.body.gPin), { mode: Gpio.OUTPUT });
-    let bPin = new Gpio(parseInt(req.body.bPin), { mode: Gpio.OUTPUT });
-    // rPin.pwmWrite(0);
+    let pins = [
+        new Gpio(parseInt(req.body.rPin), { mode: Gpio.OUTPUT }),
+        new Gpio(parseInt(req.body.gPin), { mode: Gpio.OUTPUT }),
+        new Gpio(parseInt(req.body.bPin), { mode: Gpio.OUTPUT })
+    ];
 
     let h = parseInt(req.body.h);
     let s = parseInt(req.body.s);
     let b = parseInt(req.body.b);
     if (onOff == 1) {
         for (let tempBrightness = 0; tempBrightness <= b; tempBrightness++) {
-            // let rgb = HSLToRGB(h, s, tempBrightness);
             let rgb = converter.hsv.rgb([h, s, tempBrightness]);
             console.log("on" + rgb);
-            rPin.pwmWrite(parseInt(rgb[0]));
-            gPin.pwmWrite(parseInt(rgb[1]));
-            bPin.pwmWrite(parseInt(rgb[2]));
+            updateRGB(rgb, pins);
             sleep(5);
         }
     } else if (onOff == 0) {
@@ -44,9 +36,7 @@ app.post('/update', function (req, res) {
             b--;
             let rgb = converter.hsv.rgb([h, s, b]);
             console.log("off" + rgb);
-            rPin.pwmWrite(parseInt(rgb[0]));
-            gPin.pwmWrite(parseInt(rgb[1]));
-            bPin.pwmWrite(parseInt(rgb[2]));
+            updateRGB(rgb, pins);
             sleep(5);
         }
     }
@@ -61,18 +51,14 @@ app.listen(port, (err) => {
         throw err;
     }
 })
-// app.listen(3000, () => {
-//     let rPin = new Gpio(5, { mode: Gpio.OUTPUT });;
-//     rPin.pwmWrite(1);
-//     console.log(rPin);
-//     console.log("Server running on port 3000");
-//     app.use(bodyParser.urlencoded({ extended: false }));
-//     app.use(bodyParser.json());
 
-//     app.post("/update", (req, res) => {
-//     });
-//     app.use("/", router);
-// });
+//function to change pwm signal for rgb
+
+function updateRGB(rgb, pins) {
+    pins[0].pwmWrite(parseInt(rgb[0]));
+    pins[1].pwmWrite(parseInt(rgb[1]));
+    pins[2].pwmWrite(parseInt(rgb[2]));
+}
 
 function HSLToRGB(h, s, l) {
     // Must be fractions of 1
